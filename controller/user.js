@@ -5,7 +5,6 @@ const bcrypt = require("bcryptjs")
 
 router.post("/register", async (req, res) => {
     try{
-        console.log(req.body, "the reqbody")
         const foundEmail = await User.findOne({email: req.body.email})
         if(foundEmail){
             res.json({message: "Email is already registered."})

@@ -43,7 +43,7 @@ class App extends Component {
             registerError: "",
             userId: response.userId
           })
-          this.props.history.push("/tracker")
+          this.props.history.push(`${this.state.userId}/tracker`)
         }
         else{
           this.setState({
@@ -63,7 +63,7 @@ class App extends Component {
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
-          <Route exact path={"/tracker"} render={() => <Tracker userId = {this.state.userId}/>}/>
+          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId}/>}/>
         </Switch>
       </div>
     )

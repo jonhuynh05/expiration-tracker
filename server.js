@@ -7,6 +7,7 @@ const bodyParser = require("body-parser")
 const session = require("express-session")
 const fetch = require("node-fetch")
 const userController = require("./controller/user")
+const trackerController = require("./controller/tracker")
 const PORT = process.env.PORT || 8000
 
 require("./config/db")
@@ -21,6 +22,7 @@ app.use(methodOverride("_method"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use("/user", userController)
+app.use("/tracker", trackerController)
 
 
 app.get("/*", (req, res) => {

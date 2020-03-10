@@ -3,6 +3,10 @@ import {withRouter} from "react-router-dom"
 import "./tracker.css"
 
 class Tracker extends Component{
+    async componentDidMount(){
+        console.log(this.props.match.params.userId)
+        await fetch(`/tracker/${this.props.match.params.userId}`)
+    }
     render(){
         return(
             <div>
