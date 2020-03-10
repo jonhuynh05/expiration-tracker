@@ -10,7 +10,8 @@ class App extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    registerError: ""
   }
 
   handleChange = (e) => {
@@ -22,6 +23,9 @@ class App extends Component {
   handleRegister = async (e) => {
     try{
       e.preventDefault()
+      this.setState({
+        registerError: ""
+      })
       await fetch(`/user/register`, {
         method: "POST",
         credentials: "include",
@@ -34,10 +38,15 @@ class App extends Component {
         const response = await res.json()
         console.log(response, "this is the repsonse from the server")
         if(response.message === "Success."){
+          this.setState({
+            registerError: ""
+          })
           this.props.history.push("/tracker")
         }
         else{
-          console.log(response.message)
+          this.setState({
+            registerError: response.message
+          })
         }
       })
     }
@@ -51,7 +60,7 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
-          <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister}/>}/>
+          <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
           <Route exact path={"/tracker"} render={() => <Tracker/>}/>
         </Switch>
       </div>
