@@ -13,12 +13,40 @@ class App extends Component {
     email: "",
     password: ""
   }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    })
+  }
+
+  handleRegister = async (e) => {
+    try{
+      e.preventDefault()
+      await fetch(`/user/register`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(this.state),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(async res => {
+        const response = await res.json()
+        console.log(response, "this is the repsonse from the server")
+      })
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
   render(){
     return(
       <div>
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
-          <Route exact path={"/register"} render={() => <Register/>}/>
+          <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange}/>}/>
           <Route exact path={"/tracker"} render={() => <Tracker/>}/>
         </Switch>
       </div>
