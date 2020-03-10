@@ -13,7 +13,7 @@ class Register extends Component {
                     <input placeholder="Password"></input>
                     <button type="submit">Register</button>
                 </form>
-            </div>
+            </div> 
         )
     }
 }
