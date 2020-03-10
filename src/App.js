@@ -30,10 +30,16 @@ class App extends Component {
           "Content-Type": "application/json"
         }
       })
-      // .then(async res => {
-      //   const response = await res.json()
-      //   console.log(response, "this is the repsonse from the server")
-      // })
+      .then(async res => {
+        const response = await res.json()
+        console.log(response, "this is the repsonse from the server")
+        if(response.message === "Success."){
+          this.props.history.push("/tracker")
+        }
+        else{
+          console.log(response.message)
+        }
+      })
     }
     catch(err){
       console.log(err)
