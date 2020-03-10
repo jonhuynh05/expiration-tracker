@@ -9,6 +9,9 @@ class Tracker extends Component{
                 <div className="header">
                     When's My Stuff Expiring?
                 </div>
+                <div>
+                    welcome userid: {this.props.userId}
+                </div>
                 <div className="tracker-line">
                     <form>
                         <input placeholder="Item" name="itemName"></input>

@@ -11,7 +11,8 @@ class App extends Component {
     lastName: "",
     email: "",
     password: "",
-    registerError: ""
+    registerError: "",
+    userId: ""
   }
 
   handleChange = (e) => {
@@ -39,7 +40,8 @@ class App extends Component {
         console.log(response, "this is the repsonse from the server")
         if(response.message === "Success."){
           this.setState({
-            registerError: ""
+            registerError: "",
+            userId: response.userId
           })
           this.props.history.push("/tracker")
         }
@@ -61,7 +63,7 @@ class App extends Component {
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
-          <Route exact path={"/tracker"} render={() => <Tracker/>}/>
+          <Route exact path={"/tracker"} render={() => <Tracker userId = {this.state.userId}/>}/>
         </Switch>
       </div>
     )
