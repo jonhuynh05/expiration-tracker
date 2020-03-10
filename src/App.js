@@ -9,7 +9,6 @@ class App extends Component {
     isLoggedIn: false,
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
     password: ""
   }
@@ -31,10 +30,10 @@ class App extends Component {
           "Content-Type": "application/json"
         }
       })
-      .then(async res => {
-        const response = await res.json()
-        console.log(response, "this is the repsonse from the server")
-      })
+      // .then(async res => {
+      //   const response = await res.json()
+      //   console.log(response, "this is the repsonse from the server")
+      // })
     }
     catch(err){
       console.log(err)
@@ -46,7 +45,7 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
-          <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange}/>}/>
+          <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister}/>}/>
           <Route exact path={"/tracker"} render={() => <Tracker/>}/>
         </Switch>
       </div>

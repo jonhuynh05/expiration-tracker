@@ -7,11 +7,11 @@ class Register extends Component {
             <div>
                 <div>Register</div>
                 <form>
-                    <input placeholder="First Name"></input>
-                    <input placeholder="Last Name"></input>
-                    <input placeholder="Email"></input>
-                    <input placeholder="Password"></input>
-                    <button type="submit">Register</button>
+                    <input placeholder="First Name" name="firstName" onChange={this.props.handleChange}></input>
+                    <input placeholder="Last Name" name="lastName" onChange={this.props.handleChange}></input>
+                    <input placeholder="Email" name="email" onChange={this.props.handleChange}></input>
+                    <input placeholder="Password" name="password" onChange={this.props.handleChange}></input>
+                    <button type="submit" onClick={this.props.handleRegister}>Register</button>
                 </form>
             </div> 
         )
