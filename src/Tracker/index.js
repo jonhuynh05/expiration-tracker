@@ -6,7 +6,16 @@ class Tracker extends Component{
     render(){
         return(
             <div>
-                this is the tracker
+                <div className="header">
+                    When's My Stuff Expiring?
+                </div>
+                <div className="tracker-line">
+                    <form>
+                        <input placeholder="Item" name="itemName"></input>
+                        <input placeholder="Expiration" name="expiration" type="date"></input>
+                        <button>Add</button>
+                    </form>
+                </div>
             </div>
         )
     }
