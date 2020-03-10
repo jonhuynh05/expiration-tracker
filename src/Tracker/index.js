@@ -16,6 +16,10 @@ class Tracker extends Component{
                         <button>Add</button>
                     </form>
                 </div>
+                <div>
+                    MAP USER TRACKERS AND DISPLAY HERE 
+                    ADD DELETE BUTTON
+                </div>
             </div>
         )
     }
