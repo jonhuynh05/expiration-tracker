@@ -11,5 +11,13 @@ router.get("/:userId", async (req, res) => {
     }
 })
 
+router.post("/:userId/new", async (req, res) => {
+    try{
+        console.log("hits new item")
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 
 module.exports = router

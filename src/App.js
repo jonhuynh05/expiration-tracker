@@ -12,7 +12,7 @@ class App extends Component {
     email: "",
     password: "",
     registerError: "",
-    userId: "",
+    userId: "5e680245c59ed90a3f69fc1b",
     addItem: "",
     addDate: "",
     userItems: []
@@ -61,7 +61,14 @@ class App extends Component {
   }
 
   handleAddItem = async (e) => {
-
+    await fetch(`/tracker/${this.state.userId}/new`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
   }
 
   render(){
@@ -70,7 +77,7 @@ class App extends Component {
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
-          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem}/>}/>
+          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem}/>}/>
         </Switch>
       </div>
     )

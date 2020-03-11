@@ -3,10 +3,10 @@ import {withRouter} from "react-router-dom"
 import "./tracker.css"
 
 class Tracker extends Component{
-    async componentDidMount(){
-        console.log(this.props.match.params.userId)
-        await fetch(`/tracker/${this.props.match.params.userId}`)
-    }
+    // async componentDidMount(){
+    //     console.log(this.props.match.params.userId)
+    //     await fetch(`/tracker/${this.props.match.params.userId}`)
+    // }
     render(){
         return(
             <div>
@@ -20,7 +20,7 @@ class Tracker extends Component{
                     <form>
                         <input placeholder="Item" name="addItem" onChange={this.props.handleChange}></input>
                         <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date"></input>
-                        <button>Add</button>
+                        <button onClick={this.props.handleAddItem}>Add</button>
                     </form>
                 </div>
                 <div>
