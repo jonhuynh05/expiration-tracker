@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Tracker = require("../models/Trackers")
+const User = require("../models/Users")
 
 router.get("/:userId", async (req, res) => {
     try{
@@ -13,7 +14,25 @@ router.get("/:userId", async (req, res) => {
 
 router.post("/:userId/new", async (req, res) => {
     try{
-        console.log("hits new item")
+        const foundUser = await User.findById(req.params.userId)
+        const newItem = {item: req.body.addItem, expiration: req.body.addDate}
+        console.log(foundUser)
+        if(foundUser){
+            Tracker.create(newItem, (err, createdTracker) => {
+                if(err){
+                    res.send(err)
+                }
+                else{
+                    foundUser.trackers.push(createdTracker)
+                    foundUser.save((err, data) => {
+                        res.json("Success.")
+                    })
+                }
+            })
+        }
+        else{
+            res.json("Please log into your account.")
+        }
     }
     catch(err){
         console.log(err)
