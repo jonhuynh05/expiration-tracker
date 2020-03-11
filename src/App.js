@@ -12,6 +12,7 @@ class App extends Component {
     email: "",
     password: "",
     registerError: "",
+    loginError: "",
     userId: "5e680245c59ed90a3f69fc1b",
     addItem: "",
     addDate: "",
@@ -40,7 +41,6 @@ class App extends Component {
       })
       .then(async res => {
         const response = await res.json()
-        console.log(response, "this is the repsonse from the server")
         if(response.message === "Success."){
           this.setState({
             registerError: "",
@@ -63,6 +63,9 @@ class App extends Component {
   handleLogin = async (e) => {
     try{
       e.preventDefault()
+      this.setState({
+        loginError: ""
+      })
       await fetch(`/user/login`, {
         method: "POST",
         credentials: "include",
@@ -73,7 +76,18 @@ class App extends Component {
       })
       .then(async res => {
         const response = await res.json()
-        console.log(response)
+        if(response.firstName){
+          this.setState({
+            userId: response.userId,
+            userItems: response.trackers
+          })
+          this.props.history.push(`${this.state.userId}/tracker`)
+        }
+        else{
+          this.setState({
+            loginError: response
+          })
+        }
       })
     }    
     catch(err){
@@ -96,7 +110,7 @@ class App extends Component {
     return(
       <div>
         <Switch>
-          <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin}/>}/>
+          <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin} loginError={this.state.loginError}/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
           <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem}/>}/>
         </Switch>
