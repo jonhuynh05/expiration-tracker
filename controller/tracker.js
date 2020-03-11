@@ -3,16 +3,6 @@ const router = express.Router()
 const Tracker = require("../models/Trackers")
 const User = require("../models/Users")
 
-router.get("/", async(req, res) => {
-    try{
-        console.log("new tracker get")
-    }
-    catch(err){
-        console.log(err)
-    }
-})
-
-
 router.get("/:userId", async (req, res) => {
     try{
         console.log("this hits")

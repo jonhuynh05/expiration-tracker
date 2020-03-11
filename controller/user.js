@@ -4,6 +4,19 @@ const User = require("../models/Users")
 const Tracker = require("../models/Trackers")
 const bcrypt = require("bcryptjs")
 
+router.get("/", async(req, res) => {
+    try{
+        const foundUser = await User.findById(req.session.userId)
+        const userTrackers = await Promise.all(foundUser.trackers.map((tracker) => {
+            let foundTracker = Tracker.findById(tracker)
+            return foundTracker
+        }))
+        res.json(userTrackers)
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 
 router.post("/login", async (req, res) => {
     try{

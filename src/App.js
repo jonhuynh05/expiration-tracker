@@ -62,8 +62,10 @@ class App extends Component {
 
   async getTrackers() {
     try{
-      const trackers = await (await fetch(`/tracker`)).json()
-      console.log(trackers)
+      const trackers = await (await fetch(`/user`)).json()
+      this.setState({
+        userItems: trackers
+      })
     }
     catch(err){
       console.log(err)
