@@ -3,11 +3,19 @@ import {withRouter} from "react-router-dom"
 import "./tracker.css"
 
 class Tracker extends Component{
-    // async componentDidMount(){
-    //     console.log(this.props.match.params.userId)
-    //     await fetch(`/tracker/${this.props.match.params.userId}`)
-    // }
     render(){
+        const items = this.props.userItems.map((item) => {
+            return(
+                <div className="tracker-line">
+                    <div>
+                        {item.item}
+                    </div>                
+                    <div>
+                        {item.expiration}
+                    </div>
+                </div>
+            )
+        })
         return(
             <div>
                 <div className="header">
@@ -24,7 +32,9 @@ class Tracker extends Component{
                     </form>
                 </div>
                 <div>
-                    MAP USER TRACKERS AND DISPLAY HERE 
+                    {items}
+                </div>
+                <div> 
                     ADD DELETE BUTTON
                 </div>
             </div>

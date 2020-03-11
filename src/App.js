@@ -96,6 +96,7 @@ class App extends Component {
   }
 
   handleAddItem = async (e) => {
+    e.preventDefault()
     await fetch(`/tracker/${this.state.userId}/new`, {
       method: "POST",
       credentials: "include",
@@ -112,7 +113,7 @@ class App extends Component {
         <Switch>
           <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin} loginError={this.state.loginError}/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
-          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem}/>}/>
+          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem} userItems={this.state.userItems}/>}/>
         </Switch>
       </div>
     )
