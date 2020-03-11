@@ -13,6 +13,7 @@ class Tracker extends Component{
                     <div>
                         {item.expiration}
                     </div>
+                    <button onClick={this.props.deleteItem}>Remove</button>
                 </div>
             )
         })
