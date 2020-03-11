@@ -60,6 +60,27 @@ class App extends Component {
     }
   }
 
+  handleLogin = async (e) => {
+    try{
+      e.preventDefault()
+      await fetch(`/user/login`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(this.state),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(async res => {
+        const response = await res.json()
+        console.log(response)
+      })
+    }    
+    catch(err){
+      console.log(err)
+    }
+  }
+
   handleAddItem = async (e) => {
     await fetch(`/tracker/${this.state.userId}/new`, {
       method: "POST",
@@ -75,7 +96,7 @@ class App extends Component {
     return(
       <div>
         <Switch>
-          <Route exact path={"/"} render={() => <Home/>}/>
+          <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin}/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
           <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem}/>}/>
         </Switch>

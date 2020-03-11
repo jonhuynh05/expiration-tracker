@@ -1,7 +1,42 @@
 const express = require("express")
 const router = express.Router()
 const User = require("../models/Users")
+const Tracker = require("../models/Trackers")
 const bcrypt = require("bcryptjs")
+
+
+router.post("/login", async (req, res) => {
+    try{
+        console.log("hit login route")
+        const foundUser = await User.findOne({email: req.body.email})
+        if (foundUser){
+            if(bcrypt.compareSync(req.body.password, foundUser.password)){
+                req.session.firstName = foundUser.firstName
+                req.session.email = foundUser.email
+                req.session.userId = foundUser._id
+                const userTrackers = await Promise.all(foundUser.trackers.map((tracker) => {
+                    let foundTracker = Tracker.findById(tracker)
+                    return foundTracker
+                }))
+                res.json({
+                    firstName: req.session.firstName,
+                    email: req.session.email,
+                    userId: req.session.userId,
+                    trackers: userTrackers
+                })
+            }
+            else{
+                res.json("Password is incorrect.")
+            }
+        }
+        else{
+            res.json("Email not found.")
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 
 router.post("/register", async (req, res) => {
     try{

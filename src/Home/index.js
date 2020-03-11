@@ -8,9 +8,9 @@ class Home extends Component {
                 <div>Is Your Food Expired?</div>
                 <div>Login</div>
                 <form>
-                    <input placeholder="Email"></input>
-                    <input placeholder="Password"></input>
-                    <button type="submit">Login</button>
+                    <input placeholder="Email" name="email" onChange={this.props.handleChange}></input>
+                    <input placeholder="Password" name="password" onChange={this.props.handleChange}></input>
+                    <button type="submit" onClick={this.props.handleLogin}>Login</button>
                 </form>
                 <div>Don't have an account? <Link to="/register">Register</Link></div>
             </div>
