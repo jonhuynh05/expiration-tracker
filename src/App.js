@@ -60,6 +60,16 @@ class App extends Component {
     }
   }
 
+  async getTrackers() {
+    try{
+      const trackers = await (await fetch(`/tracker`)).json()
+      console.log(trackers)
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
   handleLogin = async (e) => {
     try{
       e.preventDefault()
@@ -105,6 +115,7 @@ class App extends Component {
         "Content-Type": "application/json"
       }
     })
+    this.getTrackers()
   }
 
   render(){

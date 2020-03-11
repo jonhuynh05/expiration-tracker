@@ -4,9 +4,9 @@ import "./tracker.css"
 
 class Tracker extends Component{
     render(){
-        const items = this.props.userItems.map((item) => {
+        const items = this.props.userItems.map((item, i) => {
             return(
-                <div className="tracker-line">
+                <div className="tracker-line" key={i}>
                     <div>
                         {item.item}
                     </div>                
