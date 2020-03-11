@@ -12,7 +12,10 @@ class App extends Component {
     email: "",
     password: "",
     registerError: "",
-    userId: ""
+    userId: "",
+    addItem: "",
+    addDate: "",
+    userItems: []
   }
 
   handleChange = (e) => {
@@ -57,13 +60,17 @@ class App extends Component {
     }
   }
 
+  handleAddItem = async (e) => {
+
+  }
+
   render(){
     return(
       <div>
         <Switch>
           <Route exact path={"/"} render={() => <Home/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
-          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId}/>}/>
+          <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem}/>}/>
         </Switch>
       </div>
     )

@@ -18,8 +18,8 @@ class Tracker extends Component{
                 </div>
                 <div className="tracker-line">
                     <form>
-                        <input placeholder="Item" name="itemName"></input>
-                        <input placeholder="Expiration" name="expiration" type="date"></input>
+                        <input placeholder="Item" name="addItem" onChange={this.props.handleChange}></input>
+                        <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date"></input>
                         <button>Add</button>
                     </form>
                 </div>
