@@ -35,9 +35,6 @@ class Tracker extends Component{
                 <div>
                     {items}
                 </div>
-                <div> 
-                    ADD DELETE BUTTON
-                </div>
             </div>
         )
     }

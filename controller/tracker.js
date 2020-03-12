@@ -39,4 +39,13 @@ router.post("/:userId/new", async (req, res) => {
     }
 })
 
+router.delete(":userId/delete", async (req, res) => {
+    try{
+        console.log("delete tracker route")
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
 module.exports = router
