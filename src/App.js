@@ -120,9 +120,20 @@ class App extends Component {
     this.getTrackers()
   }
 
-  deleteItem = async() => {
+  deleteItem = async(e) => {
     try{
-      console.log("delete item")
+      console.log(e.currentTarget.value)
+      await fetch(`/tracker/${this.state.userId}/delete`, {
+        method: "DELETE",
+        credentials: "include",
+        body: JSON.stringify(this.state.userItems[e.currentTarget.value]),
+        headers:{
+          "Content-Type": "application/json"
+        }
+      })
+      .then(async res => {
+        this.getTrackers()
+      })
     }
     catch(err){
       console.log(err)

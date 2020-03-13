@@ -3,6 +3,7 @@ import {withRouter} from "react-router-dom"
 import "./tracker.css"
 
 class Tracker extends Component{
+
     render(){
         const items = this.props.userItems.map((item, i) => {
             return(
@@ -13,7 +14,7 @@ class Tracker extends Component{
                     <div>
                         {item.expiration}
                     </div>
-                    <button onClick={this.props.deleteItem}>Remove</button>
+                    <button value={i} onClick={this.props.deleteItem}>Remove</button>
                 </div>
             )
         })

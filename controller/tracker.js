@@ -39,9 +39,14 @@ router.post("/:userId/new", async (req, res) => {
     }
 })
 
-router.delete(":userId/delete", async (req, res) => {
+router.delete("/:userId/delete", async (req, res) => {
     try{
-        console.log("delete tracker route")
+        const foundUser = await User.findById(req.params.userId)
+        const foundTracker = await Tracker.findById(req.body._id)
+        foundUser.trackers.remove(foundTracker._id)
+        await foundUser.save()
+        const deleteTracker = await Tracker.findByIdAndDelete(req.body._id)
+        res.json("Removed.")
     }
     catch(err){
         console.log(err)
