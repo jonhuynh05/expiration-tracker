@@ -18,6 +18,16 @@ router.get("/", async(req, res) => {
     }
 })
 
+router.get("/logout", async (req, res) => {
+    try{
+        req.session.destroy()
+        res.json("Logged out.")
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
 router.post("/login", async (req, res) => {
     try{
         console.log("hit login route")

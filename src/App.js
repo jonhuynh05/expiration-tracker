@@ -3,6 +3,7 @@ import {withRouter, Switch, Route} from "react-router-dom"
 import Home from "./Home"
 import Register from "./Register"
 import Tracker from "./Tracker"
+import Logout from "./Logout"
 
 class App extends Component {
   state = {
@@ -91,7 +92,8 @@ class App extends Component {
         if(response.firstName){
           this.setState({
             userId: response.userId,
-            userItems: response.trackers
+            userItems: response.trackers,
+            isLoggedIn: true
           })
           this.props.history.push(`${this.state.userId}/tracker`)
         }
@@ -105,6 +107,16 @@ class App extends Component {
     catch(err){
       console.log(err)
     }
+  }
+
+  handleLogout = async () => {
+    await fetch(`/user/logout`)
+    .then(async res => {
+      this.setState({
+        isLoggedIn: false
+      })
+      this.props.history.push(`/`)
+    })
   }
 
   handleAddItem = async (e) => {
@@ -143,6 +155,13 @@ class App extends Component {
   render(){
     return(
       <div>
+        {
+          this.state.isLoggedIn === false
+          ?
+          null
+          :
+          <Logout handleLogout={this.handleLogout}/>
+        }
         <Switch>
           <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin} loginError={this.state.loginError}/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
