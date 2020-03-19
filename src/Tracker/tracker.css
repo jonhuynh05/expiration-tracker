@@ -1,0 +1,16 @@
+.header{
+    font-size: 40px;
+}
+
+.tracker-line{
+    color: red;
+    display: flex;
+}
+
+.item{
+    margin: 10px;
+}
+
+.expiratin{
+    margin: 10px;
+}

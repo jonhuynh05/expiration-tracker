@@ -95,6 +95,15 @@ class App extends Component {
             userItems: response.trackers,
             isLoggedIn: true
           })
+          for(let i = 0; i < this.state.userItems.length; i++){
+            let year = []
+            for (let j = 0; j < 4; j++){
+              year.push(this.state.userItems[i].expiration[j])
+            }
+            year = year.join("")
+            console.log(year, "YEAR")
+            console.log(this.state.userItems[i].expiration.length)
+          }
           this.props.history.push(`${this.state.userId}/tracker`)
         }
         else{
@@ -121,6 +130,7 @@ class App extends Component {
 
   handleAddItem = async (e) => {
     e.preventDefault()
+    console.log(typeof this.state.addDate)
     await fetch(`/tracker/${this.state.userId}/new`, {
       method: "POST",
       credentials: "include",
