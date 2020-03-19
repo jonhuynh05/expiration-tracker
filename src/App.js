@@ -163,7 +163,7 @@ class App extends Component {
           <Logout handleLogout={this.handleLogout}/>
         }
         <Switch>
-          <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin} loginError={this.state.loginError}/>}/>
+          <Route exact path={"/"} render={() => <Home handleChange={this.handleChange} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loginError={this.state.loginError} isLoggedIn={this.state.isLoggedIn} userId={this.state.userId}/>}/>
           <Route exact path={"/register"} render={() => <Register handleChange = {this.handleChange} handleRegister = {this.handleRegister} registerError={this.state.registerError}/>}/>
           <Route exact path={"/:userId/tracker"} render={() => <Tracker userId = {this.state.userId} handleChange = {this.handleChange} handleAddItem = {this.handleAddItem} addDate={this.state.addDate} addItem={this.state.addItem} handleAddItem={this.handleAddItem} userItems={this.state.userItems} deleteItem={this.deleteItem}/>}/>
         </Switch>

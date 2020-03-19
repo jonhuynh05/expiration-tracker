@@ -14,6 +14,7 @@ class Tracker extends Component{
                     <div>
                         {item.expiration}
                     </div>
+                    {/* <input type="date" value={item.expiration} disabled></input> */}
                     <button value={i} onClick={this.props.deleteItem}>Remove</button>
                 </div>
             )
