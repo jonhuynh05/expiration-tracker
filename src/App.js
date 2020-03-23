@@ -97,13 +97,21 @@ class App extends Component {
           })
           for(let i = 0; i < this.state.userItems.length; i++){
             let year = []
-            for (let j = 0; j < 4; j++){
+            for(let j = 5; j < 10; j++){
               year.push(this.state.userItems[i].expiration[j])
+              if(j === 9){
+                year.push("-")
+              }
+            }
+            for (let k = 0; k < 4; k++){
+              year.push(this.state.userItems[i].expiration[k])
             }
             year = year.join("")
-            console.log(year, "YEAR")
-            console.log(this.state.userItems[i].expiration.length)
+            response.trackers[i].expiration = year
           }
+          this.setState({
+            userItems: response.trackers
+          })
           this.props.history.push(`${this.state.userId}/tracker`)
         }
         else{
