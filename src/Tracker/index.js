@@ -19,7 +19,6 @@ class Tracker extends Component{
                         <div className="expiration">
                             {item.expiration}
                         </div>
-                        {/* <input type="date" value={item.expiration} disabled></input> */}
                         <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
                     </div>
                 </div>
@@ -32,8 +31,8 @@ class Tracker extends Component{
                 </div>
                 <div className="tracker-input">
                     <form>
-                        <input placeholder="Item" name="addItem" onChange={this.props.handleChange}></input>
-                        <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date"></input>
+                        <input placeholder="Item" name="addItem" onChange={this.props.handleChange} value={this.props.addItem}></input>
+                        <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date" value={this.props.addDate}></input>
                         <button onClick={this.props.handleAddItem}>Add</button>
                     </form>
                 </div>

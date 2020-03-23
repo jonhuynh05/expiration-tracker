@@ -64,6 +64,20 @@ class App extends Component {
   async getTrackers() {
     try{
       const trackers = await (await fetch(`/user`)).json()
+      for(let i = 0; i < trackers.length; i++){
+        let year = []
+        for(let j = 5; j < 10; j++){
+          year.push(trackers[i].expiration[j])
+          if(j === 9){
+            year.push("-")
+          }
+        }
+        for (let k = 0; k < 4; k++){
+          year.push(trackers[i].expiration[k])
+        }
+        year = year.join("")
+        trackers[i].expiration = year
+      }
       this.setState({
         userItems: trackers
       })
@@ -138,7 +152,6 @@ class App extends Component {
 
   handleAddItem = async (e) => {
     e.preventDefault()
-    console.log(typeof this.state.addDate)
     await fetch(`/tracker/${this.state.userId}/new`, {
       method: "POST",
       credentials: "include",
@@ -146,6 +159,10 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       }
+    })
+    this.setState({
+      addItem: "",
+      addDate: ""
     })
     this.getTrackers()
   }
