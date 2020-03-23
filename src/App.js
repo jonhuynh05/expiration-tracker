@@ -65,13 +65,29 @@ class App extends Component {
     try{
       let now = new Date()
       let day = now.getDate()
-      let month = now.getMonth()
+      let month = now.getMonth() + 1
+      if(month < 10){
+        month = `0${month}`
+      }
       let fullYear = now.getFullYear()
       let comparisonDate = []
       comparisonDate.push(fullYear, month, day)
-      comparisonDate = comparisonDate.join("")
+      comparisonDate = Number(comparisonDate.join(""))
       const trackers = await (await fetch(`/user`)).json()
       for(let i = 0; i < trackers.length; i++){
+        let expirationComparison
+        expirationComparison = Number(trackers[i].expiration.split("-").join(""))
+        let check
+        check = comparisonDate - expirationComparison
+        if(check < 0 && check > -3){
+          trackers[i].class = "almost-expired"
+        }
+        else if (check >= 0){
+          trackers[i].class = "expired"
+        }
+        else{
+          trackers[i].class = "still-good"
+        }
         let year = []
         for(let j = 5; j < 10; j++){
           year.push(trackers[i].expiration[j])
@@ -113,26 +129,26 @@ class App extends Component {
         if(response.firstName){
           this.setState({
             userId: response.userId,
-            userItems: response.trackers,
             isLoggedIn: true
           })
-          for(let i = 0; i < this.state.userItems.length; i++){
-            let year = []
-            for(let j = 5; j < 10; j++){
-              year.push(this.state.userItems[i].expiration[j])
-              if(j === 9){
-                year.push("-")
-              }
-            }
-            for (let k = 0; k < 4; k++){
-              year.push(this.state.userItems[i].expiration[k])
-            }
-            year = year.join("")
-            response.trackers[i].expiration = year
-          }
-          this.setState({
-            userItems: response.trackers
-          })
+          this.getTrackers()
+          // for(let i = 0; i < this.state.userItems.length; i++){
+          //   let year = []
+          //   for(let j = 5; j < 10; j++){
+          //     year.push(this.state.userItems[i].expiration[j])
+          //     if(j === 9){
+          //       year.push("-")
+          //     }
+          //   }
+          //   for (let k = 0; k < 4; k++){
+          //     year.push(this.state.userItems[i].expiration[k])
+          //   }
+          //   year = year.join("")
+          //   response.trackers[i].expiration = year
+          // }
+          // this.setState({
+          //   userItems: response.trackers
+          // })
           this.props.history.push(`${this.state.userId}/tracker`)
         }
         else{

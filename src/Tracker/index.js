@@ -13,7 +13,7 @@ class Tracker extends Component{
             return(
                 <div className="tracker-line" key={i}>
                     <div className="info-container">
-                        <div className="item">
+                        <div className={`item ${item.class}`}>
                             {item.item}
                         </div>                
                         <div className="expiration">

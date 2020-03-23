@@ -24,6 +24,18 @@
     margin: 20px;
 }
 
+.still-good{
+    color: green
+}
+
+.almost-expired{
+    color: orange
+}
+
+.expired{
+    color: red
+}
+
 .remove-button{
     height: 30px;
     margin: auto 10px;
