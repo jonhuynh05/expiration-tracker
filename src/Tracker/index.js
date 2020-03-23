@@ -19,17 +19,14 @@ class Tracker extends Component{
                         {item.expiration}
                     </div>
                     {/* <input type="date" value={item.expiration} disabled></input> */}
-                    <button value={i} onClick={this.props.deleteItem}>Remove</button>
+                    <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
                 </div>
             )
         })
         return(
-            <div>
+            <div id="tracker-container">
                 <div className="header">
                     Expiration Tracker
-                </div>
-                <div>
-                    welcome userid: {this.props.userId}
                 </div>
                 <div className="tracker-input">
                     <form>
@@ -38,9 +35,7 @@ class Tracker extends Component{
                         <button onClick={this.props.handleAddItem}>Add</button>
                     </form>
                 </div>
-                <div>
-                    {items}
-                </div>
+                {items}
             </div>
         )
     }
