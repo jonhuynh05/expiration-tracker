@@ -3,7 +3,7 @@
 }
 
 .tracker-line{
-    color: red;
+    color: black;
     display: flex;
     margin: 0 auto;
     width: 100%;
@@ -11,7 +11,8 @@
 }
 
 .item{
-    margin: 20px
+    margin: 20px;
+    font-weight: bold;
 }
 
 .expiration{
@@ -19,9 +20,10 @@
 }
 
 .remove-button{
-    /* padding: 5px; */
     height: 30px;
     margin: auto 0;
+    background-color: white;
+    border: 1px solid black;
 }
 
 #tracker-container{
