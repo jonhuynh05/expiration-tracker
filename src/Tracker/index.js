@@ -26,17 +26,19 @@ class Tracker extends Component{
         })
         return(
             <div id="tracker-container">
-                <div className="header">
-                    Expiration Tracker
+                <div id="tracker-background-layer">
+                    <div className="header">
+                        Expiration Tracker
+                    </div>
+                    <div className="tracker-input">
+                        <form>
+                            <input placeholder="Item" name="addItem" onChange={this.props.handleChange} value={this.props.addItem} className="tracker-add"></input>
+                            <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date" value={this.props.addDate} className="tracker-add"></input>
+                            <button onClick={this.props.handleAddItem} id="add-button">Add</button>
+                        </form>
+                    </div>
+                    {items}
                 </div>
-                <div className="tracker-input">
-                    <form>
-                        <input placeholder="Item" name="addItem" onChange={this.props.handleChange} value={this.props.addItem} className="tracker-add"></input>
-                        <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date" value={this.props.addDate} className="tracker-add"></input>
-                        <button onClick={this.props.handleAddItem} id="add-button">Add</button>
-                    </form>
-                </div>
-                {items}
             </div>
         )
     }
