@@ -14,7 +14,7 @@ class App extends Component {
     password: "",
     registerError: "",
     loginError: "",
-    userId: "5e680245c59ed90a3f69fc1b",
+    userId: "",
     addItem: "",
     addDate: "",
     userItems: []

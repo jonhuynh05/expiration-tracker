@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+.info-container{
+    margin: 0 auto;
+    display: flex;
+}
+
 .item{
     margin: 20px;
     font-weight: bold;
@@ -24,6 +29,10 @@
     margin: auto 0;
     background-color: white;
     border: 1px solid black;
+}
+
+.remove-button:hover{
+    background-color: skyblue;
 }
 
 #tracker-container{

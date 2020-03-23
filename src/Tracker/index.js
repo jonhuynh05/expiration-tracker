@@ -12,14 +12,16 @@ class Tracker extends Component{
         const items = this.props.userItems.map((item, i) => {
             return(
                 <div className="tracker-line" key={i}>
-                    <div className="item">
-                        {item.item}
-                    </div>                
-                    <div className="expiration">
-                        {item.expiration}
+                    <div className="info-container">
+                        <div className="item">
+                            {item.item}
+                        </div>                
+                        <div className="expiration">
+                            {item.expiration}
+                        </div>
+                        {/* <input type="date" value={item.expiration} disabled></input> */}
+                        <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
                     </div>
-                    {/* <input type="date" value={item.expiration} disabled></input> */}
-                    <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
                 </div>
             )
         })
