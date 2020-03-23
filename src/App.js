@@ -63,6 +63,13 @@ class App extends Component {
 
   async getTrackers() {
     try{
+      let now = new Date()
+      let day = now.getDate()
+      let month = now.getMonth()
+      let fullYear = now.getFullYear()
+      let comparisonDate = []
+      comparisonDate.push(fullYear, month, day)
+      comparisonDate = comparisonDate.join("")
       const trackers = await (await fetch(`/user`)).json()
       for(let i = 0; i < trackers.length; i++){
         let year = []
