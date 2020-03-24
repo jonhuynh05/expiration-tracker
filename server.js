@@ -9,6 +9,8 @@ const fetch = require("node-fetch")
 const userController = require("./controller/user")
 const trackerController = require("./controller/tracker")
 const PORT = process.env.PORT || 8000
+const SID = process.env.SID
+const Token = process.env.Token
 
 require("./config/db")
 
