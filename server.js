@@ -11,6 +11,8 @@ const trackerController = require("./controller/tracker")
 const PORT = process.env.PORT || 8000
 const SID = process.env.SID
 const Token = process.env.Token
+const twilio = require("twilio")
+const client = new twilio(SID, Token)
 
 require("./config/db")
 
@@ -30,6 +32,13 @@ app.use("/tracker", trackerController)
 app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"))
 })
+
+// client.messages.create({
+//     body: "hi tiff",
+//     to: "+17146157395",
+//     from: "+12075693367"
+// })
+// .then((message) => console.log(message.sid))
 
 app.listen(PORT, () => {
     console.log(`Running on PORT ${PORT}.`)
