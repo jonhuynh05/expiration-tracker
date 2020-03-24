@@ -22,6 +22,16 @@
     font-weight: bold;
 }
 
+#login-button{
+    border: none;
+    margin: 0 5px;
+    width: 60px
+}
+
+#login-button:hover{
+    background-color: skyblue;
+}
+
 #register-link{
     margin: 20px 0;
 }

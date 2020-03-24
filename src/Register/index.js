@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import {withRouter, Link} from "react-router-dom"
+import {withRouter} from "react-router-dom"
+import "./register.css"
 
 class Register extends Component {
     render(){
         return(
-            <div>
-                <div>Register</div>
-                <form>
-                    <input placeholder="First Name" name="firstName" onChange={this.props.handleChange}></input>
-                    <input placeholder="Last Name" name="lastName" onChange={this.props.handleChange}></input>
-                    <input placeholder="Email" name="email" onChange={this.props.handleChange}></input>
-                    <input placeholder="Password" name="password" onChange={this.props.handleChange}></input>
-                    <button type="submit" onClick={this.props.handleRegister}>Register</button>
-                </form>
-                {this.props.registerError}
+            <div id="register-container">
+                <div id="register-background-layer">
+                    <div id="register-information">
+                        <div id="register-header">Register</div>
+                        <form>
+                            <input placeholder="First Name" name="firstName" onChange={this.props.handleChange}></input><br/>
+                            <input placeholder="Last Name" name="lastName" onChange={this.props.handleChange}></input><br/>
+                            <input placeholder="Email" name="email" onChange={this.props.handleChange}></input><br/>
+                            <input placeholder="Password" name="password" onChange={this.props.handleChange}></input><br/>
+                            <button type="submit" onClick={this.props.handleRegister} id="register-button">Register</button>
+                        </form>
+                        {this.props.registerError}
+                    </div>
+                </div>
             </div> 
         )
     }
