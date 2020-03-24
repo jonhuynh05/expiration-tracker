@@ -35,7 +35,7 @@ class Tracker extends Component{
                         </div>
                         <div className="tracker-input">
                             <form>
-                                <input placeholder="Item" name="addItem" onChange={this.props.handleChange} value={this.props.addItem} className="tracker-add"></input>
+                                <input placeholder="Item" name="addItem" onChange={this.props.handleChange} value={this.props.addItem} className="tracker-add" maxlength="40"></input>
                                 <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date" value={this.props.addDate} className="tracker-add"></input>
                                 <button onClick={this.props.handleAddItem} id="add-button">Add</button>
                             </form>
