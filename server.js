@@ -33,9 +33,14 @@ app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
+// client.verify.services('VAd65a493e423b16d75cd6adf08faaa195')
+//     .verifications
+//     .create({to: '+17145101992', channel: 'sms'})
+//     .then(verification => console.log(verification.sid))
+
 // client.messages.create({
-//     body: "hi tiff",
-//     to: "+17146157395",
+//     body: "hi tiff, please let jon know if this works",
+//     to: "+17145101992",
 //     from: "+12075693367"
 // })
 // .then((message) => console.log(message.sid))
