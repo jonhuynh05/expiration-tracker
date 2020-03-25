@@ -10,7 +10,7 @@ class Home extends Component {
                     this.props.isLoggedIn === false
                     ?
                     <>
-                        <div id="site-name">Is Your Food Expired?</div>
+                        <div id="site-name">Expiration Tracker</div>
                         {/* <div id="login">Login</div> */}
                         <form>
                             <input placeholder="Email" name="email" onChange={this.props.handleChange}></input>
