@@ -14,7 +14,7 @@ class Home extends Component {
                         {/* <div id="login">Login</div> */}
                         <form>
                             <input placeholder="Email" name="email" onChange={this.props.handleChange}></input>
-                            <input placeholder="Password" name="password" onChange={this.props.handleChange}></input>
+                            <input placeholder="Password" name="password" type="password" onChange={this.props.handleChange}></input>
                             <button type="submit" onClick={this.props.handleLogin}id="login-button">Login</button>
                         </form>
                         {this.props.loginError}

@@ -13,7 +13,7 @@ class Register extends Component {
                             <input placeholder="First Name" name="firstName" onChange={this.props.handleChange}></input><br/>
                             <input placeholder="Last Name" name="lastName" onChange={this.props.handleChange}></input><br/>
                             <input placeholder="Email" name="email" onChange={this.props.handleChange}></input><br/>
-                            <input placeholder="Password" name="password" onChange={this.props.handleChange}></input><br/>
+                            <input placeholder="Password" name="password" type="password" onChange={this.props.handleChange}></input><br/>
                             <button type="submit" onClick={this.props.handleRegister} id="register-button">Register</button>
                         </form>
                         {this.props.registerError}
