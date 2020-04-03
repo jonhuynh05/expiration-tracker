@@ -71,6 +71,7 @@ class App extends Component {
       if(month < 10){
         month = `0${month}`
       }
+      month = Number(month)
       console.log(month, "month")
       let fullYear = now.getFullYear()
       console.log(fullYear, "fullYear")
