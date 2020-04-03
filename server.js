@@ -11,8 +11,8 @@ const trackerController = require("./controller/tracker")
 const PORT = process.env.PORT || 8000
 const SID = process.env.SID
 const Token = process.env.Token
-const twilio = require("twilio")
-const client = new twilio(SID, Token)
+// const twilio = require("twilio")
+// const client = new twilio(SID, Token)
 
 require("./config/db")
 
