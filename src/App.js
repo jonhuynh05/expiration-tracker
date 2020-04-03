@@ -64,6 +64,7 @@ class App extends Component {
   async getTrackers() {
     try{
       let now = new Date()
+      console.log(now)
       let day = now.getDate()
       let month = now.getMonth() + 1
       if(month < 10){
@@ -79,6 +80,7 @@ class App extends Component {
         expirationComparison = Number(trackers[i].expiration.split("-").join(""))
         let check
         check = comparisonDate - expirationComparison
+        trackers[i].days = check
         if(check < 0 && check > -3){
           trackers[i].class = "almost-expired"
         }

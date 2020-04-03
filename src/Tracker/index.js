@@ -19,6 +19,9 @@ class Tracker extends Component{
                         <div className="expiration">
                             {item.expiration}
                         </div>
+                        <div>
+                            {item.days}
+                        </div>
                         <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
                     </div>
                 </div>
