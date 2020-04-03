@@ -66,12 +66,14 @@ class App extends Component {
       let now = new Date()
       console.log(now)
       let day = now.getDate()
+      if(day < 10){
+        day = `0${day}`
+      }
       console.log(day, "day")
       let month = now.getMonth() + 1
       if(month < 10){
         month = `0${month}`
       }
-      month = Number(month)
       console.log(month, "month")
       let fullYear = now.getFullYear()
       console.log(fullYear, "fullYear")
