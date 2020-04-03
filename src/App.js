@@ -86,12 +86,12 @@ class App extends Component {
         let expirationComparison
         expirationComparison = Number(trackers[i].expiration.split("-").join(""))
         let check
-        check = comparisonDate - expirationComparison
+        check = expirationComparison - comparisonDate
         trackers[i].days = check
-        if(check < 0 && check > -3){
+        if(check > 0 && check < 3){
           trackers[i].class = "almost-expired"
         }
-        else if (check >= 0){
+        else if (check <= 0){
           trackers[i].class = "expired"
         }
         else{
