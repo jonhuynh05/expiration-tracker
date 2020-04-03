@@ -4,6 +4,8 @@
 
 Expiration Tracker is a tool for you to help track ingredients in your fridge and remember when they will expire. Use this tool to save money during your next grocery store visit!
 
+Check it here: https://expiration-tracker.herokuapp.com/
+
 ## User Flow
 1. User registers.
 
