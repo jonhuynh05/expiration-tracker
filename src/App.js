@@ -66,14 +66,18 @@ class App extends Component {
       let now = new Date()
       console.log(now)
       let day = now.getDate()
+      console.log(day, "day")
       let month = now.getMonth() + 1
       if(month < 10){
         month = `0${month}`
       }
+      console.log(month, "month")
       let fullYear = now.getFullYear()
+      console.log(fullYear, "fullYear")
       let comparisonDate = []
       comparisonDate.push(fullYear, month, day)
       comparisonDate = Number(comparisonDate.join(""))
+      console.log(comparisonDate, "comparisonDate")
       const trackers = await (await fetch(`/user`)).json()
       for(let i = 0; i < trackers.length; i++){
         let expirationComparison
