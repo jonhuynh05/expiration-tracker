@@ -3,11 +3,7 @@ import {withRouter, Link} from "react-router-dom"
 import "./tracker.css"
 
 class Tracker extends Component{
-    // async componentDidMount() {
-    //     for(let i = 0; i < this.props.userItems.length; i++){
-    //         console.log(this.props.userItems)
-    //     }
-    // }
+
     render(){
         const items = this.props.userItems.map((item, i) => {
             return(
@@ -19,7 +15,7 @@ class Tracker extends Component{
                         <div className="expiration">
                             {item.expiration}
                         </div>
-                        <div>
+                        <div className="days">
                             {item.days}
                         </div>
                         <button className="remove-button" value={i} onClick={this.props.deleteItem}>Remove</button>
@@ -42,6 +38,19 @@ class Tracker extends Component{
                                 <input placeholder="Expiration" name="addDate" onChange={this.props.handleChange} type="date" value={this.props.addDate} className="tracker-add"></input>
                                 <button onClick={this.props.handleAddItem} id="add-button">Add</button>
                             </form>
+                        </div>
+                        <div className="header-container">
+                            <div className="tracker-headers">
+                                <div id="item-header">
+                                    Item
+                                </div>
+                                <div id="expiration-header">
+                                    Expiration Date
+                                </div>
+                                <div id="days-header">
+                                    Days Left
+                                </div>
+                            </div>
                         </div>
                         {items}
                     </div>

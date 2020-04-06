@@ -16,12 +16,40 @@
     display: flex;
 }
 
+.header-container{
+    margin: 0 auto;
+    display: flex;
+}
+
+.tracker-headers{
+    margin: 0 auto;
+    display: flex;
+    color: white
+}
+
+#item-header{
+    margin: 20px;
+    font-weight: bold;
+}
+
+#expiration-header{
+    margin: 20px;
+}
+
+#days-header{
+    margin: 20px;
+}
+
 .item{
     margin: 20px;
     font-weight: bold;
 }
 
 .expiration{
+    margin: 20px;
+}
+
+.days{
     margin: 20px;
 }
 
